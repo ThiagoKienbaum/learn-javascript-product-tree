@@ -19,3 +19,8 @@ gulp.task('scripts', function(){
         .pipe(concat(js_dist_name))
         .pipe(gulp.dest(js_dist));
 })
+
+//Executa o script quando houver mudança
+gulp.task('watch', function(){
+    gulp.watch([js_src], ['scripts']);
+});

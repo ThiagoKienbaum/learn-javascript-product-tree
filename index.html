@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="treasyChallenge">
     <head>
-
+        <title>"Treasy Challenge</title>
+        <!--Bootstrap e CSS-->
+        <link rel="stylesheet" href="./Lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./style.css">
     </head>
 
-    <body>
+    <body ng-controller="TreeController">
+        <div class="col-xs-4">
+            {{appTitle}}    
+            <!--Menu add/editar/remover/subir/descer-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-plus" style="color: gray"></span>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-pencil" style="color: gray"></span>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-trash" style="color: gray"></span>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-chevron-up" style="color: gray"></span>
+                </a>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-chevron-down" style="color: gray"></span>
+                </a>
+            </div>
+            <!--Filtro-->
+            <div class="form-group">
+                <input type="search" class="form-control" placeholder="Digite para filtrar">
+            </div>
+            <!--Arvore de produtos-->
+            <div class="container" ng-controller="ProductsListController">
+                <ul class="list-group">
+                    <li ng-repeat="item in productItem" class="list-group-item clearfix">
+                        <span>{{ item.itemName }}</span>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
         
-        <script src="js/scripts.js"></script>
+
+        <!--Jquery, Popper, Bootstrap JS e Angular-->
+        <script src="./Lib/jquery/dist/jquery.slim.js"></script>
+        <script src="./Lib/popper.js/dist/umd/popper.min.js"></script>
+        <script src="./Lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="./Lib/angular/angular.min.js"></script>
+        <!--JS Minificado-->
+        <script src="./js/scripts.js"></script>
+        
     </body>
 </html>
