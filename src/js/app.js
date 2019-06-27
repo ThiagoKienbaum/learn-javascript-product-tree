@@ -1,25 +1,34 @@
- var app = angular.module('treasyChallenge', ['ui.router']);
+ var app = angular.module('treasyChallenge', ['ngRoute']);
 
-app.config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider
-        .otherwise('/');
-    $stateProvider
-        .state('home', {
-            url: '/',
-            templateUrl: 'view/products.html'
-        })
-        .state('products', {
-            url: 'view/products',
-            templateUrl: 'products.html'
-        });
-});
+app.config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider) {
+  $locationProvider.hashPrefix('!');
 
-app.controller("TreeController", ["$scope", function($scope) {
-    $scope.appTitle = "Produtos";    
-}]);
+  $routeProvider
+    .when('/', {
+    templateUrl: 'view/products.html',
+    controller: 'ProductsListController',    
+    })
+    .when('/products/', {
+        templateUrl: 'view/products.html',
+        controller: 'ProductsListController',    
+    })
+    .when('/products/new', {
+        templateUrl: 'view/add.html',
+        controller: 'addController',    
+    })
+    .when('/products/add/:id', {
+        templateUrl: 'view/add.html',
+        controller: 'addController',    
+    })
+    .otherwise({
+        redirectTo: '/'
+    });
+}
+]);
 
-app.controller("ProductsListController", ["$scope", function($scope){
-    $scope.productItem = [
+app.factory('Produtos', function(){
+    var service = {};
+    service.entries = [
         {id: 01, itemName: "Campo Confecções", obs: "Todos os itens"},
         {id: 02, itemName: "Bermudas", obs: "Todos os itens"},
         {id: 03, itemName: "Calças", obs: "Todos os itens"},
@@ -33,4 +42,17 @@ app.controller("ProductsListController", ["$scope", function($scope){
         {id: 11, itemName: "Social", obs: "Todos os itens"},
         {id: 12, itemName: "Terno", obs: "Todos os itens"},
     ]
+    return service;
+});
+
+app.controller("TreeController", ["$scope", function($scope) {
+    $scope.appTitle = "Produtos";    
+}]);
+
+app.controller("ProductsListController", ["$scope", 'Produtos', function($scope, Produtos){
+    $scope.productItem = Produtos.entries;
+}]);
+
+app.controller('addController', ['$scope', 'Produtos', '$routeParams', function($scope, Produtos, $routeParams) {
+    $scope.someText = 'The world is round. ID=' + $routeParams.id;
 }]);

@@ -1,3 +1,21 @@
-{{someText}}
-<br/>
-<a href="#">sdasdasd</a> <a href="#/">dad</a>
+<div class="row">
+    <div class="col-xs-12">
+        <form name="addProduct">
+            <div class="form-group">
+                <input type="number" class="form-control" required placeholder="Digite o código do produto" ng-model="produto.id">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" required placeholder="Digite o nome do produto" ng-model="produto.itemName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Digite a observação do produto" ng-model="produto.obs">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success btn-lg btn-block" ng-click ="save()"><span class="glyphicon glyphicon-ok"></span> Save</button>
+            </div>
+            <div class="form-group">
+                <a href="./products.html" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

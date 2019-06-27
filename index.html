@@ -11,7 +11,7 @@
             <h1>{{appTitle}}</h1>
             <!--Menu add/editar/remover/collapse/expand-->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="./view/add.html">
                     <span class="glyphicon glyphicon-plus" style="color: gray"></span>
                 </a>
                 <a class="navbar-brand" href="#">
@@ -31,15 +31,15 @@
             <div class="form-group">
                 <input type="search" class="form-control" placeholder="Digite para filtrar">
             </div>
-            <ui-view></ui-view>
+            <div class="col-xs-4" ng-view></div>
         </div>
         <!--Jquery, Popper, Bootstrap JS, Route e Angular-->
         <script src="./Lib/jquery/dist/jquery.slim.js"></script>
         <script src="./Lib/popper.js/dist/umd/popper.min.js"></script>
         <script src="./Lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="./Lib/angular/angular.min.js"></script>
-        <script src="./Lib/angular-ui-router/release/ui-router-angularjs.min.js"></script>
+        <script src="./Lib/angular-route/angular-route.min.js"></script>
         <!--JS Minificado-->
-        <script src="./js/scripts.js"></script>        
+        <script src="./js/scripts.js"></script> 
     </body>
 </html>
