@@ -1,22 +1,19 @@
  var app = angular.module('treasyChallenge', ['ngRoute']);
 
+// Views
 app.config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+  $locationProvider.hashPrefix('');
 
   $routeProvider
     .when('/', {
     templateUrl: 'view/products.html',
     controller: 'ProductsListController',    
     })
-    .when('/products/', {
-        templateUrl: 'view/products.html',
-        controller: 'ProductsListController',    
-    })
-    .when('/products/new', {
+    .when('/add', {
         templateUrl: 'view/add.html',
         controller: 'addController',    
     })
-    .when('/products/add/:id', {
+    .when('/add/edit/:id', {
         templateUrl: 'view/add.html',
         controller: 'addController',    
     })
@@ -26,6 +23,7 @@ app.config(['$locationProvider', '$routeProvider', function config($locationProv
 }
 ]);
 
+//Lista de produtos
 app.factory('Produtos', function(){
     var service = {};
     service.entries = [
@@ -41,10 +39,16 @@ app.factory('Produtos', function(){
         {id: 10, itemName: "Lacoste", obs: "Todos os itens"},
         {id: 11, itemName: "Social", obs: "Todos os itens"},
         {id: 12, itemName: "Terno", obs: "Todos os itens"},
-    ]
+    ];
+
+    service.save = function(entry){
+        service.entries.push(entry);
+    }
+
     return service;
 });
 
+//Controladores
 app.controller("TreeController", ["$scope", function($scope) {
     $scope.appTitle = "Produtos";    
 }]);
@@ -53,6 +57,20 @@ app.controller("ProductsListController", ["$scope", 'Produtos', function($scope,
     $scope.productItem = Produtos.entries;
 }]);
 
-app.controller('addController', ['$scope', 'Produtos', '$routeParams', function($scope, Produtos, $routeParams) {
-    $scope.someText = 'The world is round. ID=' + $routeParams.id;
+app.controller('addController', ['$scope', 'Produtos', '$location',  '$routeParams', function($scope, $location, Produtos, $routeParams) {
+    $scope.viewTitle = "Adicionar Item*";
+    $scope.productCode = "Código do produto*";
+    $scope.productName = "Nome do produto";
+    $scope.productObs = "Observação"
+    $scope.textoAuxiliar = "*Campos obrigatórios"
+
+    if(!$routeParams.id) {
+        $scope.produtos = {id: 13, itemName: "Novo", obs: "new"};
+    }
+
+    $scope.save = function() {
+        Produtos.save($scope.produtos);
+        $location.path('/');
+    }
+
 }]);

@@ -6,7 +6,7 @@
   "description": "Treasy Challenge",
   "main": "",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://treasy-challenge.thiagokienbaum.now.sh/#!/",
   "ignore": [
     "**/.*",
     "node_modules",

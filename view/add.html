@@ -1,21 +1,32 @@
-<div class="row">
+<!--Add item-->
+<div class="row" ng-controller="addController">
     <div class="col-xs-12">
+        <h1>{{viewTitle}}</h1>
         <form name="addProduct">
+            <!--Código do produto-->
+            <h1>{{productCode}}</h1>
             <div class="form-group">
                 <input type="number" class="form-control" required placeholder="Digite o código do produto" ng-model="produto.id">
             </div>
+            <!--Nome do produto-->
+            <h1>{{productName}}</h1>
             <div class="form-group">
                 <input type="text" class="form-control" required placeholder="Digite o nome do produto" ng-model="produto.itemName">
             </div>
+            <!--Observação-->
+            <h1>{{productObs}}</h1>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Digite a observação do produto" ng-model="produto.obs">
+                <input type="text" class="form-control" placeholder="Digite uma observação" ng-model="produto.obs">
             </div>
+            <!--Salvar-->
             <div class="form-group">
                 <button type="button" class="btn btn-success btn-lg btn-block" ng-click ="save()"><span class="glyphicon glyphicon-ok"></span> Save</button>
             </div>
+            <!--Cancelar-->
             <div class="form-group">
-                <a href="./products.html" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+                <a href="#!/" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
             </div>
+            <h2>{{textoAuxiliar}}</h2>
         </form>
     </div>
 </div>
