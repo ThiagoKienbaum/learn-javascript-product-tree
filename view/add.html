@@ -1,22 +1,22 @@
 <!--Add item-->
 <div class="row" ng-controller="addController">
     <div class="col-xs-12">
-        <h1>{{viewTitle}}</h1>
+        <h1> {{ viewTitle }} </h1>
         <form name="addProduct">
             <!--Código do produto-->
             <h1>{{productCode}}</h1>
             <div class="form-group">
-                <input type="number" class="form-control" required placeholder="Digite o código do produto" ng-model="produto.id">
+                <input type="number" class="form-control" required placeholder="Digite o código do produto" ng-model="produtos.id">
             </div>
             <!--Nome do produto-->
             <h1>{{productName}}</h1>
             <div class="form-group">
-                <input type="text" class="form-control" required placeholder="Digite o nome do produto" ng-model="produto.itemName">
+                <input type="text" class="form-control" required placeholder="Digite o nome do produto" ng-model="produtos.itemName">
             </div>
             <!--Observação-->
             <h1>{{productObs}}</h1>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Digite uma observação" ng-model="produto.obs">
+                <input type="text" class="form-control" placeholder="Digite uma observação" ng-model="produtos.obs">
             </div>
             <!--Salvar-->
             <div class="form-group">
